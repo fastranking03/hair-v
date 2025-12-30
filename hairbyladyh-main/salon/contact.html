@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAIR BY LADY H | Contact Us</title>
+    <link rel="icon" type="image/x-icon" href="./images/fav.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .font-luxury-serif { font-family: 'Playfair Display', serif; font-weight: 500; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 600; }
+        p { font-weight: 400; }
+        /* COLOR PALETTE */
+        .bg-accent-purple { background-color: #E7D8D9; } 
+        .text-dark-orchid { color: #8D4665; } 
+        .bg-dark-section { background-color: #F8F8F8; } 
+        .text-deep-plum { color: #4A0E4E; } 
+        .hover\:bg-accent-purple-dark:hover { background-color: #C1A0C1; } 
+        body { @apply bg-white text-gray-900 font-luxury-serif; }
+        .modal { transition: opacity 0.3s ease-in-out; }
+        
+        .glitter-hover {
+            position: relative; z-index: 1;
+            background-image: radial-gradient(circle at 100% 100%, #FFFFFF 0%, #E7D8D9 50%, #C1A0C1 100%);
+            background-size: 250% 250%;
+            transition: all 0.5s ease-in-out;
+            border: 1px solid #D8BFD8;
+        }
+        .glitter-hover:hover { background-position: 50% 50%; }
+    </style>
+</head>
+<body>
+    <div class="bg-dark-section text-dark-orchid text-xs text-center py-2 tracking-widest uppercase font-luxury-serif">Now Accepting Reservations — BOOK NOW & GET PAMPERED!</div>
+    <header class="sticky top-0 z-50 bg-white shadow-md border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
+            <a href="index.html" class="h-12 flex items-center">
+                <img src="./images/brand_logo.png" alt="HAIR BY LADY H Logo" class="h-full w-auto object-contain">
+            </a>
+            <nav class="hidden lg:flex space-x-6 h-full items-center font-luxury-serif">
+                <a href="services.html" class="text-sm uppercase tracking-wider text-gray-800 hover:text-dark-orchid transition duration-200">Services</a>
+                <a href="gallery.html" class="text-sm uppercase tracking-wider text-gray-800 hover:text-dark-orchid transition duration-200">Gallery</a>
+                <a href="blog.html" class="text-sm uppercase tracking-wider text-gray-800 hover:text-dark-orchid transition duration-200">Blog</a>
+                <a href="videos.html" class="text-sm uppercase tracking-wider text-gray-800 hover:text-dark-orchid transition duration-200">Videos</a>
+                <a href="about.html" class="text-sm uppercase tracking-wider text-gray-800 hover:text-dark-orchid transition duration-200">About Us</a>
+                <a href="contact.html" class="text-sm uppercase tracking-wider text-dark-orchid transition duration-200">Contact</a>
+                <button onclick="openEnquiryModal()" class="glitter-hover text-deep-plum text-sm py-2 px-5 uppercase tracking-widest shadow-lg">Enquire Now</button>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <button onclick="toggleMobileMenu()" class="lg:hidden text-gray-900">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <nav id="mobile-menu" class="hidden lg:hidden bg-dark-section border-b border-gray-200 w-full z-40 shadow-lg">
+        <div class="flex flex-col py-3 px-6 space-y-2 font-luxury-serif">
+            <a href="services.html" class="py-2 text-sm uppercase tracking-wider text-gray-800 hover:text-dark-orchid transition duration-200">Services</a>
+            <a href="gallery.html" class="py-2 text-sm uppercase tracking-wider text-gray-800 hover:text-dark-orchid transition duration-200">Gallery</a>
+            <a href="blog.html" class="py-2 text-sm uppercase tracking-wider text-gray-800 hover:text-dark-orchid transition duration-200">Blog</a>
+            <a href="videos.html" class="py-2 text-sm uppercase tracking-wider text-gray-800 hover:text-dark-orchid transition duration-200">Videos</a>
+            <a href="about.html" class="py-2 text-sm uppercase tracking-wider text-gray-800 hover:text-dark-orchid transition duration-200">About Us</a>
+            <a href="contact.html" class="py-2 text-sm uppercase tracking-wider text-dark-orchid transition duration-200">Contact</a>
+            <button onclick="openEnquiryModal(); toggleMobileMenu();" class="glitter-hover text-deep-plum text-sm py-2 mt-4 uppercase tracking-widest shadow-lg">Enquire Now</button>
+        </div>
+    </nav>
+
+    <main class="min-h-[80vh]">
+        <section class="py-20 md:py-32 bg-dark-section">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12">
+                
+                <div class="text-center lg:text-left">
+                    <h1 class="font-luxury-serif text-6xl mb-4 text-dark-orchid">Book your Visit</h1>
+                    <p class="font-luxury-serif text-gray-600 mb-8">Ready for your best self-care yet? Send us a request, and we will be in touch shortly. You can pick a slot that suits you, and we’ll be excited to see you!</p>
+                    <form class="flex flex-col gap-4 max-w-lg mx-auto lg:mx-0">
+                        <input type="text" placeholder="YOUR NAME" class="p-4 bg-white border border-gray-400 font-luxury-serif text-gray-900 placeholder-gray-500 focus:ring-dark-orchid focus:border-dark-orchid" required>
+                        <input type="email" placeholder="YOUR EMAIL ADDRESS" class="p-4 bg-white border border-gray-400 font-luxury-serif text-gray-900 placeholder-gray-500 focus:ring-dark-orchid focus:border-dark-orchid" required>
+                        <textarea placeholder="SERVICE REQUEST / MESSAGE" rows="4" class="p-4 bg-white border border-gray-400 font-luxury-serif text-gray-900 placeholder-gray-500 focus:ring-dark-orchid focus:border-dark-orchid"></textarea>
+                        <button type="submit" class="glitter-hover text-deep-plum font-luxury-serif py-4 px-8 uppercase tracking-wider transition duration-300 shadow-xl">
+                            Request Appointment
+                        </button>
+                    </form>
+                </div>
+
+                <div class="pt-8 lg:pt-0">
+                    <h2 class="font-luxury-serif text-5xl mb-4 text-dark-orchid">Find Us</h2>
+                    <div class="space-y-6">
+                        <div class="text-lg">
+                            <h4 class="font-luxury-serif uppercase tracking-wider text-dark-orchid">Location</h4>
+                            <p class="text-gray-600">456 Elegance Street, Downtown</p>
+                            <a href="#" class="text-gray-800 hover:text-dark-orchid text-sm italic transition duration-150">Get Directions</a>
+                        </div>
+                            <h4 class="font-luxury-serif uppercase tracking-wider text-dark-orchid">Hours</h4>
+                            <p class="text-gray-600">Tue - Fri: 10am - 8pm</p>
+                            <p class="text-gray-600">Sat: 9am - 5pm</p>
+                            <p class="text-gray-600">Sun & Mon: Closed</p>
+                        </div>
+                        <div class="text-lg">
+                            <h4 class="font-luxury-serif uppercase tracking-wider text-dark-orchid">Phone</h4>
+                            <a href="tel:5551234567" class="text-gray-800 hover:text-dark-orchid">(555) 123-4567</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="enquiry-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none" onclick="closeEnquiryModal()">
+        <div class="bg-dark-section text-gray-900 p-8 rounded-lg shadow-2xl w-full max-w-md transform scale-95 transition-transform duration-300" onclick="event.stopPropagation()">
+            
+            <div class="flex justify-between items-center border-b border-gray-300 pb-4 mb-6">
+                <h2 class="font-luxury-serif text-4xl text-dark-orchid">General Enquiry</h2>
+                <button onclick="closeEnquiryModal()" class="text-gray-900 hover:text-dark-orchid text-2xl leading-none">&times;</button>
+            </div>
+            
+            <p class="font-luxury-serif text-gray-600 mb-4 text-sm">Let us know how we can help you. We will respond within 24 hours.</p>
+
+            <form class="flex flex-col gap-4">
+                <input type="text" placeholder="Your Name" class="p-3 bg-white border border-gray-400 font-luxury-serif focus:ring-dark-orchid focus:border-dark-orchid" required>
+                <input type="email" placeholder="Your Email" class="p-3 bg-white border border-gray-400 font-luxury-serif focus:ring-dark-orchid focus:border-dark-orchid" required>
+                <textarea placeholder="Your Enquiry / Message" rows="4" class="p-3 bg-white border border-gray-400 font-luxury-serif focus:ring-dark-orchid focus:border-dark-orchid"></textarea>
+                <button type="submit" class="glitter-hover text-deep-plum font-luxury-serif py-3 uppercase tracking-widest transition duration-300 mt-2">
+                    Submit Enquiry
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        const enquiryModal = document.getElementById('enquiry-modal');
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+        function openEnquiryModal() {
+            enquiryModal.classList.remove('opacity-0', 'pointer-events-none');
+            enquiryModal.classList.add('opacity-100');
+        }
+        function closeEnquiryModal() {
+            enquiryModal.classList.remove('opacity-100');
+            enquiryModal.classList.add('opacity-0', 'pointer-events-none');
+        }
+    </script>
+   <footer class="bg-dark-section border-t border-gray-200 py-12 font-luxury-serif">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 border-b border-gray-300 pb-8 mb-8">
+            
+            <div class="text-center md:text-left">
+                <h3 class="font-luxury-serif text-2xl text-dark-orchid mb-3 tracking-wide">
+                    Book your self-care hours with us today!
+                </h3>
+                <p class="text-gray-600 text-sm mb-4">
+                    Get in touch with us via call or social media.
+                </p>
+                <button onclick="openEnquiryModal()" class="glitter-hover text-deep-plum text-sm py-2 px-5 uppercase tracking-widest shadow-lg">
+                    Book Appointment
+                </button>
+            </div>
+
+            <div class="text-center md:text-left">
+                <h4 class="font-luxury-serif text-lg text-gray-800 mb-2 uppercase tracking-wider">Contact Details</h4>
+                <ul class="space-y-1 text-gray-600 text-sm">
+                    <li>**Contact** - [Your Phone Number]</li>
+                    <li>**Address** - [Your Street Address, City, Postcode]</li>
+                </ul>
+            </div>
+            
+            <div class="text-center md:text-left">
+                <h4 class="font-luxury-serif text-lg text-gray-800 mb-2 uppercase tracking-wider">Follow Us</h4>
+                <ul class="space-y-1 text-gray-600 text-sm">
+                    <li>**Instagram** - <a href="#" class="hover:text-dark-orchid transition duration-150">[Your Instagram Handle]</a></li>
+                    <li>**Facebook** - <a href="#" class="hover:text-dark-orchid transition duration-150">[Your Facebook Page]</a></li>
+                    <li>**Pinterest** - <a href="#" class="hover:text-dark-orchid transition duration-150">[Your Pinterest Page]</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+            <p class="text-sm text-gray-600 order-2 md:order-1 mt-4 md:mt-0">&copy; 2024 HAIR BY LADY H. All Rights Reserved.</p>
+            </div>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAIR BY LADY H | Treatments</title>
+    <link rel="icon" type="image/x-icon" href="./images/fav.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .font-luxury-serif { font-family: 'Playfair Display', serif; font-weight: 500; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 600; }
+        p { font-weight: 400; }
+        .bg-accent-purple { background-color: #E7D8D9; } 
+        .text-accent-purple { color: #9932CC; } 
+        .bg-dark-section { background-color: #F8F8F8; } 
+        .text-deep-plum { color: #4A0E4E; } 
+        .text-dark-orchid { color: #8D4665; } 
+        .hover\:bg-accent-purple-dark:hover { background-color: #C1A0C1; } 
+        body { @apply bg-white text-gray-900 font-luxury-serif; }
+        .modal { transition: opacity 0.3s ease-in-out; }
+        
+        .glitter-hover {
+            position: relative; z-index: 1;
+            background-image: radial-gradient(circle at 100% 100%, #FFFFFF 0%, #E7D8D9 50%, #C1A0C1 100%);
+            background-size: 250% 250%;
+            transition: all 0.5s ease-in-out;
+            border: 1px solid #E7D8D9;
+        }
+        .glitter-hover:hover { background-position: 50% 50%; }
+        /* Modal and Custom Slot Styles */
+        .booking-step { display: none; }
+        .booking-step.active { display: block; }
+        .time-slot.selected { background-color: #E7D8D9; color: #4A0E4E; border-color: #8D4665; }
+        .service-list-item { @apply flex justify-between items-center py-3 border-b border-gray-200; }
+    </style>
+</head>
+<body>
+    <div class="bg-dark-section text-dark-orchid text-xs text-center py-2 tracking-widest uppercase font-luxury-serif">Now Accepting Reservations — BOOK NOW & GET PAMPERED!</div>
+    <!-- Header -->
+    <?php include "includes/header.php" ?>
+    <!-- END -->
+
+    <main class="min-h-[80vh]">
+        <section class="py-20 md:py-32 bg-white">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <h1 class="font-luxury-serif text-6xl text-center mb-4 text-dark-orchid">Hair & Scalp Treatments</h1>
+                <p class="text-center text-gray-600 mb-12 border-b border-gray-300 pb-8">
+                    Invest in the long-term health of your hair with our specialized and luxurious treatments.
+                </p>
+
+                <div class="bg-dark-section p-6 border-l-4 border-dark-orchid mb-12 shadow-md">
+                    <p class="text-lg font-luxury-serif text-dark-orchid mb-2">Treatment Guidance</p>
+                    <p class="text-sm text-gray-600">
+                        Our specialized treatments target deep conditioning, repair, and scalp wellness. Please book a consultation for personalized treatment plans.
+                    </p>
+                </div>
+
+                <div class="mb-16">
+                    <h3 class="font-luxury-serif text-3xl text-dark-orchid border-b border-gray-200 pb-2 mb-6">Service Price List</h3>
+                    <div class="space-y-1 bg-dark-section p-4 shadow-sm">
+                        <div class="service-list-item">
+                            <span>Eczema/Psoriasis, Gloss Hair, Hot Oil, Steam, Young Treatment</span>
+                            <span class="text-dark-orchid">£60</span>
+                            <button onclick="openBookingModal('Scalp/Deep Moisture Treatment', '60')" class="glitter-hover text-deep-plum text-xs uppercase px-3 py-1">Book Now</button>
+                        </div>
+                        <div class="service-list-item">
+                            <span>Nanoplastia, Protein, Red Light Therapy, Metal Detox</span>
+                            <span class="text-dark-orchid">£80</span>
+                            <button onclick="openBookingModal('Specialty Treatment', '80')" class="glitter-hover text-deep-plum text-xs uppercase px-3 py-1">Book Now</button>
+                        </div>
+                        <div class="service-list-item">
+                            <span>Upgrade to Express Keratin</span>
+                            <span class="text-dark-orchid">£100</span>
+                            <button onclick="openBookingModal('Express Keratin', '100')" class="glitter-hover text-deep-plum text-xs uppercase px-3 py-1">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center pt-8">
+                    <a href="services.html" class="border border-dark-orchid text-dark-orchid hover:bg-dark-orchid hover:text-white font-luxury-serif py-3 px-10 uppercase tracking-widest transition duration-300">
+                        Back to Categories
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="booking-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none" onclick="closeBookingModal()">
+        <div class="bg-white text-gray-900 p-8 rounded-lg shadow-2xl w-full max-w-2xl transform scale-95 transition-transform duration-300" onclick="event.stopPropagation()">
+            
+            <div class="flex justify-between items-center border-b border-gray-300 pb-4 mb-6">
+                <h2 class="font-luxury-serif text-4xl text-dark-orchid" id="modal-title">Book Service</h2>
+                <button onclick="closeBookingModal()" class="text-gray-900 hover:text-dark-orchid text-2xl leading-none">&times;</button>
+            </div>
+            
+            <div id="booking-steps-container">
+                <div id="step-1" class="booking-step active">
+                    <p class="font-luxury-serif text-gray-600 mb-4">Service: <span id="selected-service-name" class="text-dark-orchid"></span> - Price: <span id="selected-service-price" class="text-dark-orchid"></span></p>
+                    <h3 class="font-luxury-serif text-xl text-gray-900 mb-3">Select Date</h3>
+                    <div class="grid grid-cols-7 gap-2 text-center font-luxury-serif mb-6">
+                        <div class="p-1 border border-dark-orchid text-gray-900 cursor-pointer time-slot" data-date="Mon, Oct 1">1</div><div class="p-1 bg-gray-300 border border-gray-400 text-gray-700 cursor-not-allowed">2</div>
+                        <div class="p-1 border border-dark-orchid text-gray-900 cursor-pointer time-slot" data-date="Wed, Oct 3">3</div><div class="p-1 bg-gray-300 border border-gray-400 text-gray-700 cursor-not-allowed">4</div>
+                    </div>
+                    <h3 class="font-luxury-serif text-xl text-gray-900 mb-3">Select Time</h3>
+                    <div id="time-slots-container" class="flex gap-3 flex-wrap">
+                        <span class="glitter-hover text-deep-plum px-3 py-1 text-sm rounded cursor-pointer time-slot" data-time="09:00 AM">9:00 AM</span>
+                        <span class="glitter-hover text-deep-plum px-3 py-1 text-sm rounded cursor-pointer time-slot" data-time="11:30 AM">11:30 AM</span>
+                        <span class="bg-gray-300 text-gray-700 px-3 py-1 text-sm rounded border border-gray-400 cursor-not-allowed">1:00 PM (Booked)</span>
+                        <span class="glitter-hover text-deep-plum px-3 py-1 text-sm rounded cursor-pointer time-slot" data-time="03:30 PM">3:30 PM</span>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-gray-300 text-right">
+                        <button onclick="selectDateTime()" id="proceed-button-step1" class="glitter-hover text-deep-plum px-6 py-2 rounded transition duration-200 opacity-50 cursor-not-allowed" disabled>Proceed to Checkout</button>
+                    </div>
+                </div>
+
+                <div id="step-2" class="booking-step">
+                    <h3 class="font-luxury-serif text-2xl text-dark-orchid mb-4">Confirm & Pay</h3>
+                    <div class="p-4 bg-dark-section border border-gray-200 mb-6">
+                        <p class="font-luxury-serif text-sm">Service: <span id="payment-service-name" class="text-dark-orchid"></span> on <span id="payment-date-time" class="text-dark-orchid"></span></p>
+                        <p class="font-luxury-serif text-xl">Total Due: <span id="payment-amount" class="text-dark-orchid"></span></p>
+                    </div>
+                    <form>
+                        <h4 class="font-luxury-serif text-lg mb-3">Payment Details</h4>
+                        <input type="text" placeholder="Card Number" class="w-full p-3 mb-3 border border-gray-400 focus:ring-dark-orchid focus:border-dark-orchid">
+                        <div class="flex gap-4 mb-4"><input type="text" placeholder="MM/YY" class="w-1/2 p-3 border border-gray-400 focus:ring-dark-orchid focus:border-dark-orchid"><input type="text" placeholder="CVC" class="w-1/2 p-3 border border-gray-400 focus:ring-dark-orchid focus:border-dark-orchid"></div>
+                        <p class="text-red-600 text-sm mt-4">**DEMO NOTE:** This form is structural. Real payment processing requires a backend API integration.</p>
+                        <div class="mt-8 pt-4 border-t border-gray-300 flex justify-between">
+                            <button type="button" onclick="nextStep(1)" class="text-gray-700 hover:text-dark-orchid transition duration-200">← Back to Selection</button>
+                            <button type="submit" class="glitter-hover text-deep-plum px-6 py-2 rounded transition duration-200">Finalize Booking</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="enquiry-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none" onclick="closeEnquiryModal()">
+        <div class="bg-dark-section text-gray-900 p-8 rounded-lg shadow-2xl w-full max-w-md transform scale-95 transition-transform duration-300" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center border-b border-gray-300 pb-4 mb-6">
+                <h2 class="font-luxury-serif text-4xl text-dark-orchid">General Enquiry</h2>
+                <button onclick="closeEnquiryModal()" class="text-gray-900 hover:text-dark-orchid text-2xl leading-none">&times;</button>
+            </div>
+            <p class="font-luxury-serif text-gray-600 mb-4 text-sm">Let us know how we can help you. We will respond within 24 hours.</p>
+            <form class="flex flex-col gap-4">
+                <input type="text" placeholder="Your Name" class="p-3 bg-white border border-gray-400 font-luxury-serif focus:ring-dark-orchid focus:border-dark-orchid" required>
+                <input type="email" placeholder="Your Email" class="p-3 bg-white border border-gray-400 font-luxury-serif focus:ring-dark-orchid focus:border-dark-orchid" required>
+                <textarea placeholder="Your Enquiry / Message" rows="4" class="p-3 bg-white border border-gray-400 font-luxury-serif focus:ring-dark-orchid focus:border-dark-orchid"></textarea>
+                <button type="submit" class="glitter-hover text-deep-plum font-luxury-serif py-3 uppercase tracking-widest transition duration-300 mt-2">Submit Enquiry</button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        // GLOBAL JS for Modals and Multi-Step Booking (CRITICAL FOR FUNCTIONALITY)
+        const bookingModal = document.getElementById('booking-modal');
+        const enquiryModal = document.getElementById('enquiry-modal');
+        let selectedData = { service: '', price: '', date: '', time: '' };
+        let currentStep = 1;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.time-slot').forEach(slot => {
+                slot.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('cursor-not-allowed')) return;
+                    document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+                    e.target.classList.add('selected');
+                    selectedData.date = e.target.dataset.date || 'Wed, Oct 3'; 
+                    selectedData.time = e.target.dataset.time || '11:30 AM';
+                    const proceedButton = document.getElementById('proceed-button-step1');
+                    proceedButton.classList.remove('opacity-50', 'cursor-not-allowed');
+                    proceedButton.disabled = false;
+                });
+            });
+        });
+
+        function updateSteps() {
+            document.querySelectorAll('.booking-step').forEach(step => {
+                step.classList.remove('active');
+            });
+            document.getElementById(`step-${currentStep}`).classList.add('active');
+        }
+
+        function nextStep(stepNumber) {
+            if (stepNumber === 2) {
+                document.getElementById('payment-service-name').textContent = selectedData.service;
+                document.getElementById('payment-amount').textContent = `£${selectedData.price}`;
+                document.getElementById('payment-date-time').textContent = `${selectedData.date} at ${selectedData.time}`;
+                document.querySelector('#step-2 button[type="submit"]').textContent = `Finalize Booking (£${selectedData.price})`;
+            }
+            currentStep = stepNumber;
+            updateSteps();
+        }
+
+        function selectDateTime() {
+            if (!document.querySelector('.time-slot.selected')) {
+                alert("Please select both a date and a time slot.");
+                return;
+            }
+            nextStep(2);
+        }
+
+        function openBookingModal(name, price) {
+            selectedData = { service: name, price: price, date: 'Wed, Oct 3', time: '' }; 
+            document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+            document.getElementById('proceed-button-step1').classList.add('opacity-50', 'cursor-not-allowed');
+            document.getElementById('proceed-button-step1').disabled = true;
+
+            document.getElementById('modal-title').textContent = `Book: ${name}`;
+            document.getElementById('selected-service-name').textContent = name;
+            document.getElementById('selected-service-price').textContent = `£${price}`;
+
+            currentStep = 1;
+            updateSteps();
+            bookingModal.classList.remove('opacity-0', 'pointer-events-none');
+            bookingModal.classList.add('opacity-100');
+        }
+
+        function closeBookingModal() {
+            bookingModal.classList.remove('opacity-100');
+            bookingModal.classList.add('opacity-0', 'pointer-events-none');
+        }
+        
+        function openEnquiryModal() {
+            enquiryModal.classList.remove('opacity-0', 'pointer-events-none');
+            enquiryModal.classList.add('opacity-100');
+        }
+
+        function closeEnquiryModal() {
+            enquiryModal.classList.remove('opacity-100');
+            enquiryModal.classList.add('opacity-0', 'pointer-events-none');
+        }
+        
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+    </script>
+
+    <?php include "includes/footer.php" ?>
+
+</body>
+</html>

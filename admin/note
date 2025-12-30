@@ -1,0 +1,69 @@
+http://localhost/calendar-service/dashboard.php
+admin123
+
+
+
+sql:
+ALTER TABLE bookings
+ADD service VARCHAR(100) NOT NULL,
+ADD sub_service VARCHAR(100) NOT NULL,
+ADD phone VARCHAR(20) NOT NULL,
+ADD message TEXT,
+ADD price DECIMAL(10,2) NOT NULL,
+ADD payment_status ENUM('pending', 'paid') DEFAULT 'pending';
+
+
+
+
+Step-by-Step Guidelines: Building the PHP Calendar Booking Service
+This is a concise recap of our journey from scratch. Refer back if you forget—copy it to a note!
+1. Setup Environment (XAMPP)
+
+Download/install XAMPP (free web server with PHP/MySQL).
+Start Apache & MySQL in XAMPP Control Panel.
+Create project folder: C:\xampp\htdocs\calendar-service (or equivalent on Mac/Linux).
+Test: Open http://localhost in browser (should show XAMPP dashboard).
+
+2. Create Database
+
+Open phpMyAdmin: http://localhost/phpmyadmin.
+Create DB: Name it bookingcalendar.
+Run SQL to create bookings table (copy from early responses: includes id, name, email, date, timeslot, etc.).
+Later updates: Add columns like service, sub_service, phone, message, price, payment_status via ALTER TABLE.
+
+3. Core Files & Code
+
+config.php: Database connection, service definitions (e.g., hair cuts with subs, durations, prices), time slot function, PayPal/email settings.
+index.php: Main app—handles services menu, sub-services, calendar, slots, form, PayPal button.
+Use Bootstrap for UI.
+Logic: GET params for service/sub/date; POST for booking form.
+
+success.php: Handles post-payment—saves booking, sends emails (admin & customer) via PHPMailer.
+dashboard.php: Admin view—password-protected (admin123—change it!), shows bookings table.
+
+4. Key Features Added Step-by-Step
+
+Basic Calendar: Monthly grid, click date → show slots (green available, red booked).
+Services Menu: Cards with images, "MORE INFO" → sub-services list → "BOOK NOW" → calendar (custom durations).
+Booking Form: After slot select—name, email, phone, optional message. Validates input.
+PayPal Integration: Sandbox setup (developer.paypal.com). After form → PayPal button → redirect to success.php on payment.
+Emails: PHPMailer for reliable sending (SMTP setup with Gmail). Admin notification + customer confirmation (HTML templates).
+Past Slots: On today's date, grey/blur "Closed" for passed times (compare current time).
+Dashboard: View all bookings; login with password.
+
+5. Testing & Access
+
+Run app: http://localhost/calendar-service/index.php.
+Dashboard: http://localhost/calendar-service/dashboard.php (login: admin123).
+Database: http://localhost/phpmyadmin → select bookingcalendar → browse bookings table.
+Test bookings: Select service → sub → date → slot → form → pay (sandbox) → check emails/DB.
+
+6. Customization & Tips
+
+Edit services/prices in config.php.
+Change PayPal to live (replace client ID).
+Security: Add HTTPS, CAPTCHA, real auth for production.
+Debug: Enable errors in PHP (add ini_set('display_errors', 1); at file top).
+Deploy: Upload to web host (e.g., Hostinger), import DB.
+
+If issues: Check XAMPP running, code typos, or share errors. Start over by copying files from responses! 🚀

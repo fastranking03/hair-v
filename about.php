@@ -1,0 +1,157 @@
+<?php
+$page = "about";
+?>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAIR BY LADY H | About Us</title>
+    <link rel="icon" type="image/x-icon" href="./images/fav.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .font-luxury-serif { font-family: 'Playfair Display', serif; font-weight: 500; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 600; }
+        p { font-weight: 400; }
+        /* COLOR PALETTE */
+        .bg-accent-purple { background-color: #E7D8D9; } 
+        .text-dark-orchid { color: #8D4665; } 
+        .bg-dark-section { background-color: #F8F8F8; } 
+        .text-deep-plum { color: #4A0E4E; } 
+        .hover\:bg-accent-purple-dark:hover { background-color: #C1A0C1; } 
+        body { @apply bg-white text-gray-900 font-luxury-serif; }
+        .modal { transition: opacity 0.3s ease-in-out; }
+        
+        .glitter-hover {
+            position: relative; z-index: 1;
+            background-image: radial-gradient(circle at 100% 100%, #FFFFFF 0%, #E7D8D9 50%, #C1A0C1 100%);
+            background-size: 250% 250%;
+            transition: all 0.5s ease-in-out;
+            border: 1px solid #D8BFD8;
+        }
+        .glitter-hover:hover { background-position: 50% 50%; }
+    </style>
+</head>
+<body>
+    <div class="bg-dark-section text-dark-orchid text-xs text-center py-2 tracking-widest uppercase font-luxury-serif">Now Accepting Reservations — BOOK NOW & GET PAMPERED!</div>
+    <!-- Header -->
+    <?php include "includes/header.php" ?>
+    <!-- END -->
+
+    <nav id="mobile-menu" class="hidden lg:hidden bg-dark-section border-b border-gray-200 w-full z-40 shadow-lg">
+        <div class="flex flex-col py-3 px-6 space-y-2 font-luxury-serif">
+            <a href="services.html" class="py-2 text-sm uppercase tracking-wider text-gray-800 hover:text-dark-orchid transition duration-200">Services</a>
+            <a href="gallery.html" class="py-2 text-sm uppercase tracking-wider text-gray-800 hover:text-dark-orchid transition duration-200">Gallery</a>
+            <a href="blog.html" class="py-2 text-sm uppercase tracking-wider text-gray-800 hover:text-dark-orchid transition duration-200">Blog</a>
+            <a href="videos.html" class="py-2 text-sm uppercase tracking-wider text-gray-800 hover:text-dark-orchid transition duration-200">Videos</a>
+            <a href="about.html" class="py-2 text-sm uppercase tracking-wider text-dark-orchid transition duration-200">About Us</a>
+            <a href="contact.html" class="py-2 text-sm uppercase tracking-wider text-gray-800 hover:text-dark-orchid transition duration-200">Contact</a>
+            <button onclick="openEnquiryModal(); toggleMobileMenu();" class="glitter-hover text-deep-plum text-sm py-2 mt-4 uppercase tracking-widest shadow-lg">Enquire Now</button>
+        </div>
+    </nav>
+
+    <main class="min-h-[80vh]">
+        <section class="py-20 md:py-32 bg-dark-section">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="font-luxury-serif text-6xl mb-8 text-dark-orchid">
+                   Our vision helps us serve you better.
+                </h1>
+                <p class="text-lg text-gray-600 mb-6">
+Beauty, when enhanced with the right care, can become art in itself. That’s what we’ve always believed at our salon. And that belief has made us pour craft generously into each of our clients. When you do visit us, you’ll notice how creating your dream look is like devotion for our stylists.
+                </p>
+                <p class="text-lg text-gray-600 italic">
+                   “I built this space so self-care could feel not only about the result, but a rejuvenating, deeply personal process for women to enjoy.”
+                </p>
+                  <p class="text-lg text-gray-600 mb-6 font-luxury-serif font-semibold">
+                    — Humaira, Founder
+                </p>
+            </div>
+        </section>
+
+        <section class="py-20 md:py-32 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="font-luxury-serif text-6xl text-center mb-16 text-dark-orchid">
+                    Meet Our Master Stylists
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                    
+                    <div class="bg-dark-section border border-gray-200 shadow-lg group hover:scale-[1.03] transition-transform duration-300">
+                        <img src="./images/team_evelyn.jpg" alt="Photo of Evelyn Reed" width="600" height="750" class="w-full h-96 object-cover border-b border-dark-orchid">
+                        <div class="p-6 text-center">
+                            <h3 class="font-luxury-serif text-xl tracking-wide text-gray-900">Evelyn Reed</h3>
+                            <p class="text-dark-orchid text-sm uppercase mt-1">Creative Director, Hair</p>
+                            <button onclick="openEnquiryModal()" class="mt-4 glitter-hover text-deep-plum font-luxury-serif py-2 px-6 uppercase tracking-widest text-xs transition duration-300">
+                                Enquire Now
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bg-dark-section border border-gray-200 shadow-lg group hover:scale-[1.03] transition-transform duration-300">
+                        <img src="./images/team_alexander.jpg" alt="Photo of Alexander Voss" width="600" height="750" class="w-full h-96 object-cover border-b border-dark-orchid">
+                        <div class="p-6 text-center">
+                            <h3 class="font-luxury-serif text-xl tracking-wide text-gray-900">Alexander Voss</h3>
+                            <p class="text-dark-orchid text-sm uppercase mt-1">Lead Esthetician, Spa</p>
+                            <button onclick="openEnquiryModal()" class="mt-4 glitter-hover text-deep-plum font-luxury-serif py-2 px-6 uppercase tracking-widest text-xs transition duration-300">
+                                Enquire Now
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-dark-section border border-gray-200 shadow-lg group hover:scale-[1.03] transition-transform duration-300">
+                        <img src="./images/team_sofia.jpg" alt="Photo of Sofia Chen" width="600" height="750" class="w-full h-96 object-cover border-b border-dark-orchid">
+                        <div class="p-6 text-center">
+                            <h3 class="font-luxury-serif text-xl tracking-wide text-gray-900">Sofia Chen</h3>
+                            <p class="text-dark-orchid text-sm uppercase mt-1">Nail Artist & Event Specialist</p>
+                            <button onclick="openEnquiryModal()" class="mt-4 glitter-hover text-deep-plum font-luxury-serif py-2 px-6 uppercase tracking-widest text-xs transition duration-300">
+                                Enquire Now
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="enquiry-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none" onclick="closeEnquiryModal()">
+        <div class="bg-dark-section text-gray-900 p-8 rounded-lg shadow-2xl w-full max-w-md transform scale-95 transition-transform duration-300" onclick="event.stopPropagation()">
+            
+            <div class="flex justify-between items-center border-b border-gray-300 pb-4 mb-6">
+                <h2 class="font-luxury-serif text-4xl text-dark-orchid">General Enquiry</h2>
+                <button onclick="closeEnquiryModal()" class="text-gray-900 hover:text-dark-orchid text-2xl leading-none">&times;</button>
+            </div>
+            
+            <p class="font-luxury-serif text-gray-600 mb-4 text-sm">Let us know how we can help you. We will respond within 24 hours.</p>
+
+            <form class="flex flex-col gap-4">
+                <input type="text" placeholder="Your Name" class="p-3 bg-white border border-gray-400 font-luxury-serif focus:ring-dark-orchid focus:border-dark-orchid" required>
+                <input type="email" placeholder="Your Email" class="p-3 bg-white border border-gray-400 font-luxury-serif focus:ring-dark-orchid focus:border-dark-orchid" required>
+                <textarea placeholder="Your Enquiry / Message" rows="4" class="p-3 bg-white border border-gray-400 font-luxury-serif focus:ring-dark-orchid focus:border-dark-orchid"></textarea>
+                <button type="submit" class="glitter-hover text-deep-plum font-luxury-serif py-3 uppercase tracking-widest transition duration-300 mt-2">
+                    Submit Enquiry
+                </button>
+            </form>
+        </div>
+    </div>
+ 
+    <?php include "includes/footer.php" ?>
+    <script>
+        const enquiryModal = document.getElementById('enquiry-modal');
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+        function openEnquiryModal() {
+            enquiryModal.classList.remove('opacity-0', 'pointer-events-none');
+            enquiryModal.classList.add('opacity-100');
+        }
+        function closeEnquiryModal() {
+            enquiryModal.classList.remove('opacity-100');
+            enquiryModal.classList.add('opacity-0', 'pointer-events-none');
+        }
+    </script>
+ 
+</body>
+</html>
